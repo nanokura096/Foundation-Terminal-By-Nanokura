@@ -1,0 +1,49 @@
+:root {
+    --fnd-green: #00ff41;
+    --fnd-bg: #0a0a0a;
+}
+
+body, html {
+    margin: 0; padding: 0;
+    background-color: var(--fnd-bg);
+    color: var(--fnd-green);
+    font-family: monospace;
+    height: 100vh;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: #000; /* 真っ黒 */
+    display: none; /* JSで制御するが、最初はHTML側でflexにする */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.auth-container {
+    border: 2px solid var(--fnd-green); /* 枠線を太く */
+    padding: 50px;
+    background: #050505;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2); /* ぼんやり光らせる */
+}
+
+input {
+    display: block;
+    width: 250px;
+    margin: 10px auto;
+    padding: 10px;
+    background: #000;
+    color: var(--fnd-green);
+    border: 1px solid var(--fnd-green);
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 30px;
+    background: var(--fnd-green);
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
