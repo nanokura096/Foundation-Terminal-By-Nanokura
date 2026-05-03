@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCP Foundation - Secure Terminal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   <div id="loginScreen" class="overlay" style="display: flex;">
+    <div class="auth-container">
+        <h1 class="logo-text">SCP FOUNDATION</h1>
+        <p class="warning-text">警告: 適切なクリアランスなしでのアクセスは厳禁です。</p>
+        <div class="input-group">
+            <input type="text" id="username" placeholder="ID: ADMIN" autocomplete="off">
+            <input type="password" id="password" placeholder="KEY: 226227" autocomplete="off">
+            <button class="auth-btn" onclick="login()">AUTHENTICATE</button>
+        </div>
+        <div id="loginError" class="error-msg"></div>
+    </div>
+</div>
+    </div>
+
+    <div id="bootScreen" class="overlay"></div>
+
+    <div id="mainTerminal" style="display:none;">
+        <header class="terminal-header">
+            <div class="header-left">SCP_INTERNAL_NET [v7.42]</div>
+            <div id="statusbar" class="header-right">STATUS: CONNECTED</div>
+        </header>
+
+        <main class="content-area">
+            <section class="search-module">
+                <div class="input-line">
+                    <span class="prompt">></span>
+                    <input type="text" id="staffId" placeholder="ITEM_# OR STAFF_ID" onkeypress="if(event.key==='Enter')searchFile()">
+                    <select id="clearance">
+                        <option value="1">L1</option>
+                        <option value="2">L2</option>
+                        <option value="3" selected>L3</option>
+                        <option value="4">L4</option>
+                        <option value="5">L5 / O5</option>
+                    </select>
+                    <button onclick="searchFile()">ACCESS</button>
+                </div>
+            </section>
+
+            <section id="displayWrapper">
+                <nav id="tabs" class="tab-bar" style="display:none;">
+                    <button class="tab-btn" onclick="showTab('personnel')">DESCRIPTION</button>
+                    <button class="tab-btn" onclick="showTab('ability')">PROCEDURES</button>
+                    <button class="tab-btn" onclick="showTab('artifact')">ADDENDUM</button>
+                    <button class="tab-btn" onclick="showTab('record')">INCIDENT_REPORT</button>
+                </nav>
+                <div id="result">
+                    <div class="placeholder-text">WAITING FOR INPUT...</div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="terminal-footer">
+            <button class="list-toggle" onclick="toggleStaffList()">[ FILES_INDEX ]</button>
+            <div id="staffList" class="hidden-list"></div>
+            <button class="emergency-trigger" onclick="triggerEmergency()">REPORT_CONTAINMENT_BREACH</button>
+        </footer>
+    </div>
+
+    <div id="amnesticOverlay" class="overlay"></div>
+    <div id="emergencyOverlay" class="overlay">
+        <div class="emergency-box">
+            <div id="emergencyMsg"></div>
+            <div id="emergencyChoices"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
